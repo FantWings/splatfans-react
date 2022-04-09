@@ -1,29 +1,40 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import BattleStageBox from '../components/BattleStageBox'
+import SalmonRunBox from '../components/salmonRunBox'
 import { SchedulesAPI } from '../interfaces/schedules'
+import { salmonRunAPI } from '../interfaces/salmon-run'
 
 export default function HeroBody() {
-  const [data, setData] = useState<SchedulesAPI>()
+  const [schedules, setSchedules] = useState<SchedulesAPI>()
+  const [salmonRun, setSalmonRun] = useState<salmonRunAPI>()
   useEffect(() => {
     fetch('https://splatoon2.ink/data/schedules.json')
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => setSchedules(data))
+  }, [])
+
+  useEffect(() => {
+    fetch('https://splatoon2.ink/data/coop-schedules.json')
+      .then((response) => response.json())
+      .then((data) => setSalmonRun(data))
   }, [])
 
   return (
     <Body>
       <div className="container">
         <div className="columns">
-          {data && (
+          {schedules && (
             <>
-              <BattleStageBox data={data.regular} icon={RegluarBattleImg} />
-              <BattleStageBox data={data.gachi} icon={RegluarBattleImg} />
-              <BattleStageBox data={data.league} icon={RegluarBattleImg} />
+              <BattleStageBox data={schedules.regular} icon={RegluarBattleImg} />
+              <BattleStageBox data={schedules.gachi} icon={RegluarBattleImg} />
+              <BattleStageBox data={schedules.league} icon={RegluarBattleImg} />
             </>
           )}
         </div>
-        <div className="columns"></div>
+        <div className="columns" style={{ alignItems: 'center' }}>
+          {salmonRun && <SalmonRunBox data={salmonRun} />}
+        </div>
       </div>
     </Body>
   )
@@ -39,6 +50,9 @@ const Body = styled.div`
     margin-left: -0.75rem;
     margin-right: -0.75rem;
     margin-top: -0.75rem;
+    :not(:last-child) {
+      margin-bottom: 2rem;
+    }
   }
 `
 

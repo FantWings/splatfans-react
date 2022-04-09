@@ -94,6 +94,23 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  .image {
+      display: block;
+      position: relative;
+
+      * {
+        box-sizing: inherit;
+      }
+
+      &.is-48x48 {
+        height: 48px;
+        width: 48px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
 `
 
 export default GlobalStyles

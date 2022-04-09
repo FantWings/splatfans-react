@@ -12,7 +12,7 @@ export default function HeroHead() {
             </div>
           </div>
           <div className="group-right">
-            <div className="subtitle size-2 font-splatoon2 is-inline">Map Schedules</div>
+            <div className="subtitle size-2 font-splatoon2 is-inline">时刻表</div>
           </div>
         </div>
         <div className="groups flex-app">
