@@ -2,9 +2,10 @@ import styled from 'styled-components'
 import { schedules } from '../interfaces/schedules'
 import moment from 'moment'
 import CountDown from './Countdown'
+import MapShowCase from './MapShowCase'
 
-export default function BattleStageBox(props: { data: Array<schedules>; icon: string }) {
-  const { id, game_mode, start_time, end_time, stage_a, stage_b, rule } = props.data[0]
+export default function BattleStageBox(props: { data: Array<schedules> }) {
+  const { game_mode, start_time, end_time, stage_a, stage_b, rule } = props.data[0]
   const next_battle = props.data[1]
 
   const covertTime = (timestamp: number) => moment(parseInt(timestamp + '000')).format('HH:mm')
@@ -28,7 +29,7 @@ export default function BattleStageBox(props: { data: Array<schedules>; icon: st
           <div className="current-stage">
             <div className="groups top-bar">
               <div className="group-left">
-                <div className="group-item title-color is-size-5">{game_mode.name}</div>
+                <div className="group-item title-color is-size-5">{rule.name}</div>
               </div>
               <div className="group-right">
                 <div className="group-item">
@@ -37,24 +38,14 @@ export default function BattleStageBox(props: { data: Array<schedules>; icon: st
               </div>
             </div>
             <div className="map-box">
-              <div
-                className="stage-image"
-                style={{ backgroundImage: `url(https://splatoon2.ink/assets/splatnet${stage_a.image})` }}
-              >
-                <figure className="image is-16x9" />
-              </div>
-              <div
-                className="stage-image"
-                style={{ backgroundImage: `url(https://splatoon2.ink/assets/splatnet${stage_b.image})` }}
-              >
-                <figure className="image is-16x9" />
-              </div>
+              <MapShowCase mapUrl={stage_a.image} />
+              <MapShowCase mapUrl={stage_b.image} />
             </div>
           </div>
           <div className="next-tag">下一场</div>
           {/* ------------------下一场 ----------------*/}
           <div className="next-stage">
-            <div className="mode">{next_battle.game_mode.name}</div>
+            <div className="mode">{next_battle.rule.name}</div>
             <div className="time">
               <span className="count-down">{CountDown(next_battle.start_time)}</span>
               <span className="next-date">
@@ -64,27 +55,17 @@ export default function BattleStageBox(props: { data: Array<schedules>; icon: st
           </div>
           <div className="next-stage-maps">
             <div className="map-box">
-              <div
-                className="stage-image"
-                style={{ backgroundImage: `url(https://splatoon2.ink/assets/splatnet${next_battle.stage_a.image})` }}
-              >
-                <figure className="image is-16x9" />
-              </div>
-              <div
-                className="stage-image"
-                style={{ backgroundImage: `url(https://splatoon2.ink/assets/splatnet${next_battle.stage_b.image})` }}
-              >
-                <figure className="image is-16x9" />
-              </div>
+              <MapShowCase mapUrl={next_battle.stage_a.image} />
+              <MapShowCase mapUrl={next_battle.stage_b.image} />
             </div>
           </div>
           <div className="next-stage-options">
-            <a className="button is-rounded is-translucent-light">
+            <span className="button is-rounded is-translucent-light">
               <span className="icon squid-icon-tilt">
                 <span className="fa squid-squid" />
               </span>
               查看所有即将到来的地图
-            </a>
+            </span>
           </div>
         </div>
       </div>
@@ -102,6 +83,7 @@ const stageIcon: any = {
 }
 
 const Body = styled.div`
+  flex: 1;
   div.column {
     flex-grow: 1;
     margin: 0rem 0.75rem;
@@ -160,27 +142,6 @@ const Body = styled.div`
         font-family: splatoon1;
       }
 
-      // 标题样式
-      .stage-tittle {
-        display: flex;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        @media screen and (max-width: 720px) {
-          flex-direction: column;
-          align-items: center;
-        }
-        div.item {
-          &.image-box {
-            margin-left: 1rem;
-            margin-right: 1rem;
-          }
-          div.title {
-            font-size: 32px;
-            line-height: 1.3;
-          }
-        }
-      }
-
       //当前地图样式
       .current-stage {
         color: #fff;
@@ -193,7 +154,7 @@ const Body = styled.div`
         div.top-bar {
           justify-content: space-between;
           margin-bottom: 0rem;
-          font-size: 20px;
+          font-size: 16px;
         }
       }
 
@@ -202,6 +163,8 @@ const Body = styled.div`
         justify-content: space-between;
         color: #fff;
         margin-bottom: 0.25rem;
+        font-size: 12px;
+        align-items: center;
         div.mode {
           font-size: 20px;
         }
@@ -232,26 +195,6 @@ const Body = styled.div`
         display: flex;
         margin-left: -0.25rem;
         margin-right: -0.25rem;
-        div.stage-image {
-          margin-left: 0.25rem;
-          margin-right: 0.25rem;
-          background-size: contain;
-          background-repeat: no-repeat;
-          border-radius: 10px;
-          position: relative;
-          box-sizing: border-box;
-          width: 100%;
-          :hover {
-            cursor: pointer;
-          }
-        }
-        figure {
-          margin: 0;
-          padding: 0;
-        }
-        .is-16x9 {
-          padding-top: 56.5%;
-        }
       }
     }
   }
