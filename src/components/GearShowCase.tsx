@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { gears } from '../interfaces/merchandises'
-import { gearShowCaseBgMask, squidMask, ramdomIcon, cashIcon } from '../assets/baseImage'
+import { gearShowCaseBgMask, squidMask, ramdomIcon, cashIcon, tagMask } from '../assets/baseImage'
 
 import merchandiseBackGroundImg from '../assets/img/bg-circles.png'
 
@@ -172,7 +172,7 @@ const Body = styled.div`
     margin: 0 0 0 -23px;
     line-height: 1.5;
     padding-right: 1.7rem;
-    mask-image: url(${squidMask});
+    mask-image: url(${tagMask});
     -webkit-mask-size: cover;
     mask-size: cover;
     -webkit-mask-position: right center;
