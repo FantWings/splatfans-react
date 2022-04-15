@@ -1,4 +1,4 @@
-export default function mapImageBox() {
+export default function MapImageBox() {
   return (
     <div className="image">
       <img
