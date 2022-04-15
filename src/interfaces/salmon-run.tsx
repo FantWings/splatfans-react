@@ -7,7 +7,16 @@ export interface details {
   start_time: number
   end_time: number
   stage: { image: string; name: string }
-  weapons: Array<{ id: string; weapon: { id: string; name: string; thumbnail: string; image: string } }>
+  weapons: Array<weaponsList>
 }
 
-export interface weapons {}
+export interface weaponsList {
+  id: string
+  weapon: {
+    id: string
+    name: string
+    thumbnail: string
+    image: string
+  }
+  coop_special_weapon: { name: string; image: string }
+}

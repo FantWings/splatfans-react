@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
-export default function MapShowCase(props: { mapUrl: string }) {
-  const { mapUrl } = props
+export default function MapShowCase(props: { mapUrl: string; name: string }) {
+  const { mapUrl, name } = props
   return (
     <Body className="stage-image" style={{ backgroundImage: `url(https://splatoon2.ink/assets/splatnet${mapUrl})` }}>
+      <div className="map-name">{name}</div>
       <figure className="image is-16x9" />
     </Body>
   )
@@ -20,6 +21,17 @@ const Body = styled.div`
   width: 100%;
   :hover {
     cursor: pointer;
+  }
+
+  div.map-name {
+    color: #fff;
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    line-height: 1.5;
+    padding: 0 8px;
   }
 
   figure {
