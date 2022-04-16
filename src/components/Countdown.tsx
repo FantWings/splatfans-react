@@ -2,7 +2,7 @@ import moment from 'moment'
 import { useEffect, useRef, useState } from 'react'
 
 export default function CountDown(deadline: number) {
-  const [current, setTime] = useState('0 分 0 秒')
+  const [current, setTime] = useState('计算剩余时间...')
   const timerID: any = useRef()
   const format = moment(parseInt(deadline + '000')).format('YYYY-MM-DD HH:mm:ss')
   const deadLine = moment(format)
