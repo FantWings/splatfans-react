@@ -5,7 +5,7 @@ export default function HeroFoot() {
     <Body>
       <span>本网站不隶属于任天堂。所有产品名称、徽标和品牌均为任天堂所有。</span>
       <span>站点设计源于splatoon2.ink，使用React编写。</span>
-      <span className="link" onClick={() => {}}>
+      <span className="link" onClick={() => window.open('https://github.com/FantWings/splatfans-react', '_blank')}>
         GitHub
       </span>
     </Body>
