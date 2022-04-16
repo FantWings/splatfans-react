@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import CountDown from './Countdown'
 import { gears } from '../interfaces/merchandises'
 import { gearShowCaseBgMask, squidMask, ramdomIcon, cashIcon, tagMask } from '../assets/baseImage'
 
@@ -25,7 +26,7 @@ export default function GearShowCase(props: { gear: gears }) {
             <img src={ramdomIcon} alt="locked-skill" />
           </div>
         </div>
-        <div className="remaining-time squid">还剩2分钟</div>
+        <div className="remaining-time squid">{CountDown(gear.end_time)}</div>
         <div className="gear-image">
           <div className="image">
             <img src={`https://splatoon2.ink/assets/splatnet${gear.gear.image}`} alt="cloths" />
