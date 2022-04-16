@@ -6,7 +6,7 @@ import BGSpots from '../assets/img/bg-spots.png'
 import SalmonRunPic from '../assets/img/1600px-Splatoon_2_art_book_cover_art.png'
 import MrGizz from '../assets/img/mr-grizz.png'
 import { salmonRunAPI, weaponsList } from '../interfaces/salmon-run'
-import { salmonIcon, dotMask, cardHeaderMask, hookMask, tagMask } from '../assets/baseImage'
+import { salmonIcon, dotMask, cardHeaderMask, hookMask, tagMask } from '../theme/baseImage'
 
 export default function SalmonRunBox(props: { data: salmonRunAPI }) {
   const { details, schedules } = props.data
@@ -296,6 +296,8 @@ const Body = styled.div`
                   display: flex;
                   justify-content: center;
                   flex: 1;
+                  margin: 0 0.5rem;
+                  line-height: 1.25;
                 }
                 div.next-weapons {
                   flex: 1;

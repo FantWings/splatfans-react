@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { schedules } from '../interfaces/schedules'
-import { stageIcon } from '../assets/baseImage'
+import { stageIcon } from '../theme/baseImage'
 import moment from 'moment'
 import CountDown from './Countdown'
 import MapShowCase from './MapShowCase'

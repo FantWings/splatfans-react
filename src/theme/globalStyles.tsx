@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-
+import { squidMask } from './baseImage'
 const GlobalStyles = createGlobalStyle`
   // 容器样式
   div.container {
@@ -94,6 +94,7 @@ const GlobalStyles = createGlobalStyle`
     }
   }
 
+  // 图片样式
   .image {
       display: block;
       position: relative;
@@ -112,28 +113,36 @@ const GlobalStyles = createGlobalStyle`
       }
     }
 
-
-    // 标题样式
-    .stage-tittle {
-      display: flex;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+  // 标题样式
+  .stage-tittle {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    @media screen and (max-width: 720px) {
+      flex-direction: column;
       align-items: center;
-      @media screen and (max-width: 720px) {
-        flex-direction: column;
-        align-items: center;
+    }
+    div.item {
+      &.image-box {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
       }
-      div.item {
-        &.image-box {
-          margin-left: 0.5rem;
-          margin-right: 0.5rem;
-        }
-        div.title {
-          font-size: 32px;
-          line-height: 1.3;
-        }
+      div.title {
+        font-size: 32px;
+        line-height: 1.3;
       }
     }
+  }
+
+  // 背景样式
+  div.masked {
+    &.squid{
+      background-image: linear-gradient(180deg,transparent,rgba(36,36,36,0.1)), url(${squidMask});
+      background-position: top;
+      background-size: 100% 100%,80px 80px;
+    }
+  }
 `
 
 export default GlobalStyles

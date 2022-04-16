@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import CountDown from './Countdown'
 import { gears } from '../interfaces/merchandises'
-import { gearShowCaseBgMask, squidMask, ramdomIcon, cashIcon, tagMask } from '../assets/baseImage'
+import { gearShowCaseBgMask, squidMask, ramdomIcon, cashIcon, tagMask } from '../theme/baseImage'
 
 import merchandiseBackGroundImg from '../assets/img/bg-circles.png'
 
@@ -35,7 +35,7 @@ export default function GearShowCase(props: { gear: gears }) {
         <div className="gear-name">
           <div className="overlay">
             <div className="info-overlay original-gear">
-              <span className="title">Original Gear</span>
+              <span className="title">原始装备</span>
               <div className="skill-container">
                 <div className="skills flex-row">
                   <div className="main-skill main-skill-bg">
@@ -54,7 +54,7 @@ export default function GearShowCase(props: { gear: gears }) {
               </div>
             </div>
             <div className="info-overlay common-ability">
-              <span className="title">Common gear ability</span>
+              <span className="title">容易获得的技能</span>
               <div className="skill-container">
                 <div className="skills flex-row">
                   <div className="main-skill main-skill-bg">

@@ -5,6 +5,9 @@ export default function HeroFoot() {
     <Body>
       <span>本网站不隶属于任天堂。所有产品名称、徽标和品牌均为任天堂所有。</span>
       <span>站点设计源于splatoon2.ink，使用React编写。</span>
+      <span className="link" onClick={() => {}}>
+        GitHub
+      </span>
     </Body>
   )
 }
@@ -15,4 +18,8 @@ const Body = styled.div`
   color: #7a7a7a;
   text-align: center;
   font-size: 8px;
+  span.link {
+    color: #ff5600;
+    cursor: pointer;
+  }
 `
