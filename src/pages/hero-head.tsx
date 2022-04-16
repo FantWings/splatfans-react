@@ -63,7 +63,8 @@ const Body = styled.div`
     border-radius: 20px;
     padding: 15px;
     div.title {
-      font-size: 2rem;
+      font-size: 1.2rem;
+      text-align: center;
     }
     div.columns {
       display: flex;

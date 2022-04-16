@@ -75,5 +75,9 @@ const Body = styled.div`
   }
   div.model-content {
     max-width: 640px;
+    position: relative;
+    margin: 0 16px;
+    overflow: auto;
+    max-height: calc(100vh - 140px);
   }
 `

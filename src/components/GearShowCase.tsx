@@ -80,9 +80,14 @@ export default function GearShowCase(props: { gear: gears }) {
 
 const Body = styled.div`
   flex: none;
-  padding: 0.7rem;
+  width: 50%;
+  @media screen and (min-width: 768px) {
+    width: 33.333%;
+  }
+  padding: 8px;
+  box-sizing: border-box;
   div.merchandise-box {
-    width: 160px;
+    display: inline-block;
     background-image: url(${merchandiseBackGroundImg});
     background-position: 50% top;
     background-size: 240px 120px;
@@ -233,6 +238,7 @@ const Body = styled.div`
     div.cost {
       display: inline-block;
       margin: 0 0.25rem;
+      line-height: 0;
     }
   }
 `
