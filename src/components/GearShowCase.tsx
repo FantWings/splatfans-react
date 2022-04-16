@@ -185,6 +185,9 @@ const Body = styled.div`
     mask-position: right center;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
+    div {
+      font-size: 12px;
+    }
   }
   div.gear-image {
     margin: 0 25px;
