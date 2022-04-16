@@ -4,22 +4,22 @@ import { useEffect, useRef, useState } from 'react'
 export default function CountDown(deadline: number) {
   const [current, setTime] = useState('0 天 0 时 0 分 0 秒')
   const timerID: any = useRef()
-  const test = moment(parseInt(deadline + '000')).format('YYYY-MM-DD HH:mm:ss')
-  const deadLine = moment(test)
+  const format = moment(parseInt(deadline + '000')).format('YYYY-MM-DD HH:mm:ss')
+  const deadLine = moment(format)
   const deadLineTime = deadLine.diff(moment())
 
-  let durationTime = moment.duration(deadLineTime)
-  let isArrived = deadLineTime < 0
+  const durationTime = useRef(moment.duration(deadLineTime))
+  const isArrived = deadLineTime < 0
 
   useEffect(() => {
     timerID.current = setInterval(() => {
-      let arriveTime = `${durationTime.days()} 天 ${durationTime.hours()} 时 ${durationTime.minutes()} 分 ${durationTime.seconds()} 秒`
+      let arriveTime = `${durationTime.current.days()} 天 ${durationTime.current.hours()} 时 ${durationTime.current.minutes()} 分 ${durationTime.current.seconds()} 秒`
       if (!isArrived) {
-        durationTime = moment.duration(deadLine.diff(moment()))
+        durationTime.current = moment.duration(deadLine.diff(moment()))
         setTime(() => arriveTime) // make pretty
       }
     }, 1000)
-  }, [])
+  }, [deadLine, isArrived])
 
   useEffect(() => {
     if (isArrived) {
