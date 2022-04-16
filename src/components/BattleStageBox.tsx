@@ -65,7 +65,7 @@ export default function BattleStageBox(props: { data: Array<schedules> }) {
               <span className="icon squid-icon-tilt">
                 <span className="fa squid-squid" />
               </span>
-              查看所有即将到来的地图
+              查询未来全部地图（暂未做完）
             </span>
           </div>
         </div>
