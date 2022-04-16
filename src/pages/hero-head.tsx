@@ -6,7 +6,7 @@ import GearShowCase from '../components/GearShowCase'
 import merchandisesAPI from '../interfaces/merchandises'
 
 // 页头组件
-export default function HeroHead() {
+export default function HeroHead(props: { setBlur: Function }) {
   const [isActive, setIsActive] = useState(false)
   const [splatNetData, setSplatNetData] = useState<merchandisesAPI>()
 

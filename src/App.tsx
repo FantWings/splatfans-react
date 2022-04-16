@@ -13,7 +13,7 @@ function App() {
   const [blur, setBlur] = useState(false)
   return (
     <Body className={`App ${blur ? 'blur' : ''}`}>
-      <HeroHead />
+      <HeroHead setBlur={setBlur} />
       <HeroBody />
       <HeroFoot />
       <GlobalStyles />
