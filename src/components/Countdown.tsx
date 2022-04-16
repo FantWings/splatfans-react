@@ -2,7 +2,7 @@ import moment from 'moment'
 import { useEffect, useRef, useState } from 'react'
 
 export default function CountDown(deadline: number) {
-  const [current, setTime] = useState('0 天 0 时 0 分 0 秒')
+  const [current, setTime] = useState('0 分 0 秒')
   const timerID: any = useRef()
   const format = moment(parseInt(deadline + '000')).format('YYYY-MM-DD HH:mm:ss')
   const deadLine = moment(format)
@@ -13,10 +13,19 @@ export default function CountDown(deadline: number) {
 
   useEffect(() => {
     timerID.current = setInterval(() => {
-      let arriveTime = `${durationTime.current.days()} 天 ${durationTime.current.hours()} 时 ${durationTime.current.minutes()} 分 ${durationTime.current.seconds()} 秒`
+      const days = durationTime.current.days()
+      const hours = durationTime.current.hours()
+      const minutes = durationTime.current.minutes()
+      const seconds = durationTime.current.seconds()
+
+      const arriveTime = () => {
+        if (days) return `${days} 天 ${hours} 时 ${minutes} 分`
+        return `${hours} 时 ${minutes} 分 ${seconds} 秒`
+      }
+
       if (!isArrived) {
         durationTime.current = moment.duration(deadLine.diff(moment()))
-        setTime(() => arriveTime) // make pretty
+        setTime(() => arriveTime()) // make pretty
       }
     }, 1000)
   }, [deadLine, isArrived])
