@@ -8,8 +8,8 @@ import MrGizz from '../assets/img/mr-grizz.png'
 import { salmonRunAPI, weaponsList } from '../interfaces/salmon-run'
 import { salmonIcon, dotMask, cardHeaderMask, hookMask, tagMask } from '../theme/baseImage'
 
-export default function SalmonRunBox(props: { data: salmonRunAPI }) {
-  const { details, schedules } = props.data
+export default function SalmonRunBox({ data }: { data: salmonRunAPI }) {
+  const { details, schedules } = data
   const covertTime = (timestamp: number) => moment(parseInt(timestamp + '000')).format('MM/DD HH:mm')
 
   return (
@@ -106,8 +106,7 @@ export default function SalmonRunBox(props: { data: salmonRunAPI }) {
   )
 }
 
-const WeaponBox = (props: { weaponList: Array<weaponsList> }) => {
-  const { weaponList } = props
+const WeaponBox = ({ weaponList }: { weaponList: Array<weaponsList> }) => {
   return (
     <>
       {weaponList.map((weapon) => {
@@ -128,9 +127,8 @@ const WeaponBox = (props: { weaponList: Array<weaponsList> }) => {
   )
 }
 
-const Events = (props: { startTime: number; endTime: number }) => {
+const Events = ({ startTime, endTime }: { startTime: number; endTime: number }) => {
   const covertTime = (timestamp: number) => moment(parseInt(timestamp + '000')).format('MM/DD HH:mm')
-  const { startTime, endTime } = props
   return (
     <div className="event">
       <div className="time-line">

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-export default function MapShowCase(props: { mapUrl: string; name: string }) {
-  const { mapUrl, name } = props
+export default function MapShowCase({ mapUrl, name }: { mapUrl: string; name: string }) {
   return (
     <Body className="stage-image" style={{ backgroundImage: `url(https://splatoon2.ink/assets/splatnet${mapUrl})` }}>
       <div className="map-name">{name}</div>

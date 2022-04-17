@@ -5,9 +5,9 @@ import moment from 'moment'
 import CountDown from './Countdown'
 import MapShowCase from './MapShowCase'
 
-export default function BattleStageBox(props: { data: Array<schedules> }) {
-  const { game_mode, start_time, end_time, stage_a, stage_b, rule } = props.data[0]
-  const next_battle = props.data[1]
+export default function BattleStageBox({ data }: { data: Array<schedules> }) {
+  const { game_mode, start_time, end_time, stage_a, stage_b, rule } = data[0]
+  const next_battle = data[1]
 
   const covertTime = (timestamp: number) => moment(parseInt(timestamp + '000')).format('HH:mm')
 

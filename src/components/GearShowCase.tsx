@@ -5,8 +5,7 @@ import { gearShowCaseBgMask, squidMask, ramdomIcon, cashIcon, tagMask } from '..
 
 import merchandiseBackGroundImg from '../assets/img/bg-circles.png'
 
-export default function GearShowCase(props: { gear: gears }) {
-  const { gear } = props
+export default function GearShowCase({ gear }: { gear: gears }) {
   return (
     <Body className="column">
       <div className="merchandise-box font-splatoon2">

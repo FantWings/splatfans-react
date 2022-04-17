@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-export default function Model(props: { active: boolean; children: any; onClose: Function }) {
-  let { active, children, onClose } = props
+export default function Model({ active, children, onClose }: { active: boolean; children: any; onClose: Function }) {
   const [isActive, setIsActive] = useState(active)
   useEffect(() => {
     setIsActive(active)
