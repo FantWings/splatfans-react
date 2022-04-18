@@ -14,23 +14,23 @@ export default function HeroBody() {
   const [salmonRun, setSalmonRun] = useState<salmonRunAPI>()
   const [isActive, setIsActive] = useState(false)
   const [splatNetData, setSplatNetData] = useState<merchandisesAPI>()
-
+  const APIADDR: string = 'https://api.htips.cn/splatfans/api'
   useEffect(() => {
-    fetch('https://splatoon2.ink/data/schedules.json')
+    fetch(`${APIADDR}/schedules/battle.json`)
       .then((response) => response.json())
-      .then((data) => setSchedules(data))
+      .then(({ data }) => setSchedules(data))
   }, [])
 
   useEffect(() => {
-    fetch('https://splatoon2.ink/data/coop-schedules.json')
+    fetch(`${APIADDR}/schedules/coop.json`)
       .then((response) => response.json())
-      .then((data) => setSalmonRun(data))
+      .then(({ data }) => setSalmonRun(data))
   }, [])
 
   useEffect(() => {
-    fetch('https://splatoon2.ink/data/merchandises.json')
+    fetch(`${APIADDR}/onlineshop/merchandises.json`)
       .then((response) => response.json())
-      .then((data) => setSplatNetData(data))
+      .then(({ data }) => setSplatNetData(data))
   }, [])
 
   return (

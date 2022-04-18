@@ -11,12 +11,12 @@ export default function GearShowCase({ gear }: { gear: gears }) {
       <div className="merchandise-box font-splatoon2">
         <div className="band">
           <div className="img">
-            <img src={`https://splatoon2.ink/assets/splatnet${gear.gear.brand.image}`} alt="BrandIcon" />
+            <img src={`https://app.splatoon2.nintendo.net${gear.gear.brand.image}`} alt="BrandIcon" />
           </div>
         </div>
         <div className="skills flex-column">
           <div className="main-skill main-skill-bg">
-            <img src={`https://splatoon2.ink/assets/splatnet${gear.skill.image}`} alt="Main-Skill-icon" />
+            <img src={`https://app.splatoon2.nintendo.net${gear.skill.image}`} alt="Main-Skill-icon" />
           </div>
           <div className="sub top-gap">
             <img src={ramdomIcon} alt="locked-skill" />
@@ -28,18 +28,18 @@ export default function GearShowCase({ gear }: { gear: gears }) {
         <div className="remaining-time squid">{CountDown(gear.end_time)}</div>
         <div className="gear-image">
           <div className="image">
-            <img src={`https://splatoon2.ink/assets/splatnet${gear.gear.image}`} alt="cloths" />
+            <img src={`https://app.splatoon2.nintendo.net${gear.gear.image}`} alt="cloths" />
           </div>
         </div>
         <div className="gear-name">
           <div className="overlay">
-            <div className="info-overlay original-gear">
+            {/* <div className="info-overlay original-gear">
               <span className="title">原始装备</span>
               <div className="skill-container">
                 <div className="skills flex-row">
                   <div className="main-skill main-skill-bg">
                     <img
-                      src={`https://splatoon2.ink/assets/splatnet${gear.original_gear.skill.image}`}
+                      src={`https://app.splatoon2.nintendo.net${gear.original_gear.skill.image}`}
                       alt="Main-Skill-icon"
                     />
                   </div>
@@ -51,14 +51,14 @@ export default function GearShowCase({ gear }: { gear: gears }) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="info-overlay common-ability">
               <span className="title">容易获得的技能</span>
               <div className="skill-container">
                 <div className="skills flex-row">
                   <div className="main-skill main-skill-bg">
                     <img
-                      src={`https://splatoon2.ink/assets/splatnet${gear.gear.brand.frequent_skill.image}`}
+                      src={`https://app.splatoon2.nintendo.net${gear.gear.brand.frequent_skill.image}`}
                       alt="Main-Skill-icon"
                     />
                   </div>
@@ -197,7 +197,7 @@ const Body = styled.div`
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 45px;
+      bottom: 35px;
       margin: 0 6px;
       opacity: 0;
       transition: 0.3s ease;

@@ -47,7 +47,7 @@ export default function SalmonRunBox({ data }: { data: salmonRunAPI }) {
                       <div
                         className="stage-image"
                         style={{
-                          backgroundImage: `url(https://splatoon2.ink/assets/splatnet${details[0].stage.image})`,
+                          backgroundImage: `url(https://app.splatoon2.nintendo.net${details[0].stage.image})`,
                         }}
                       >
                         <figure className="image is-16x9" />
@@ -79,7 +79,7 @@ export default function SalmonRunBox({ data }: { data: salmonRunAPI }) {
                         <div
                           className="stage-image"
                           style={{
-                            backgroundImage: `url(https://splatoon2.ink/assets/splatnet${details[1].stage.image})`,
+                            backgroundImage: `url(https://app.splatoon2.nintendo.net${details[1].stage.image})`,
                           }}
                         >
                           <figure className="image is-16x9" />
@@ -114,7 +114,7 @@ const WeaponBox = ({ weaponList }: { weaponList: Array<weaponsList> }) => {
           <div className="colunm" key={weapon.id}>
             <div className="image" style={{ padding: '0.25rem' }}>
               <img
-                src={`https://splatoon2.ink/assets/splatnet${
+                src={`https://app.splatoon2.nintendo.net${
                   weapon.id === '-1' ? weapon.coop_special_weapon.image : weapon.weapon.image
                 }`}
                 alt="weapon"

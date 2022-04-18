@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export default function MapShowCase({ mapUrl, name }: { mapUrl: string; name: string }) {
   return (
-    <Body className="stage-image" style={{ backgroundImage: `url(https://splatoon2.ink/assets/splatnet${mapUrl})` }}>
+    <Body className="stage-image" style={{ backgroundImage: `url(https://app.splatoon2.nintendo.net${mapUrl})` }}>
       <div className="map-name">{name}</div>
       <figure className="image is-16x9" />
     </Body>
