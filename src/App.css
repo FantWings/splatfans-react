@@ -2,11 +2,11 @@ html {
   background-image: url(./assets/img/bg-squids.a17b557e.png);
   background-position: top;
   background-size: 360px 360px;
-  animation: moveing-bg 20s linear infinite;
-}
+  /* animation: moveing-bg 20s linear infinite;
+} */
 
-@keyframes moveing-bg {
+/* @keyframes moveing-bg {
   to {
     background-position: 0 calc(var(--bg-size)* -1)
-  }
+  } */
 }
