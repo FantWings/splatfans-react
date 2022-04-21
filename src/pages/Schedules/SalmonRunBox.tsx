@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import moment from 'moment'
-import CountDown from './Countdown'
+import CountDown from '../../components/Countdown'
 
-import BGSpots from '../assets/img/bg-spots.png'
-import SalmonRunPic from '../assets/img/1600px-Splatoon_2_art_book_cover_art.png'
-import MrGizz from '../assets/img/mr-grizz.png'
-import { salmonRunAPI, weaponsList } from '../interfaces/salmon-run'
-import { salmonIcon, dotMask, cardHeaderMask, hookMask, tagMask } from '../theme/baseImage'
+import BGSpots from '../../assets/img/bg-spots.png'
+import SalmonRunPic from '../../assets/img/1600px-Splatoon_2_art_book_cover_art.png'
+import MrGizz from '../../assets/img/mr-grizz.png'
+import { salmonRunAPI, weaponsList } from '../../interfaces/salmon-run'
+import { salmonIcon, dotMask, cardHeaderMask, hookMask, tagMask } from '../../theme/baseImage'
 
 export default function SalmonRunBox({ data }: { data: salmonRunAPI }) {
   const { details, schedules } = data

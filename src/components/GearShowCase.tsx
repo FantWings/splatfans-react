@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import CountDown from './Countdown'
-import { gears } from '../interfaces/merchandises'
-import { gearShowCaseBgMask, squidMask, ramdomIcon, cashIcon, tagMask } from '../theme/baseImage'
+import { gears } from '@/interfaces/merchandises'
+import { cardHeaderMask, squidMask, ramdomIcon, cashIcon, tagMask } from '@/theme/baseImage'
 
-import merchandiseBackGroundImg from '../assets/img/bg-circles.png'
+import merchandiseBackGroundImg from '@/assets/img/bg-circles.png'
 
 export default function GearShowCase({ gear }: { gear: gears }) {
   return (
@@ -107,7 +107,7 @@ const Body = styled.div`
         opacity: 1;
       }
     }
-    mask-image: url(${gearShowCaseBgMask});
+    mask-image: url(${cardHeaderMask});
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: 600px 960px;

@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import BattleStageBox from '../components/BattleStageBox'
-import SalmonRunBox from '../components/SalmonRunBox'
-import { SchedulesAPI } from '../interfaces/schedules'
-import { salmonRunAPI } from '../interfaces/salmon-run'
-import merchandisesAPI from '../interfaces/merchandises'
+import BattleStageBox from './BattleStageBox'
+import SalmonRunBox from './SalmonRunBox'
+import { SchedulesAPI } from '../../interfaces/schedules'
+import { salmonRunAPI } from '../../interfaces/salmon-run'
+import merchandisesAPI from '../../interfaces/merchandises'
 
-import Model from '../components/Model'
-import GearShowCase from '../components/GearShowCase'
+import Model from '../../components/Model'
+import GearShowCase from '../../components/GearShowCase'
 
-export default function HeroBody() {
+export default function Schedules() {
   const [schedules, setSchedules] = useState<SchedulesAPI>()
   const [salmonRun, setSalmonRun] = useState<salmonRunAPI>()
   const [isActive, setIsActive] = useState(false)
