@@ -1,26 +1,26 @@
-// import { lazy, Suspense } from 'react'
-// import { Route, Routes } from 'react-router-dom'
+import { useState, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import styled from 'styled-components'
 import './style.css'
 
 import GlobalStyles from '@/theme/globalStyles'
 import Schedules from '@/pages/Schedules'
-import { useState } from 'react'
-import styled from 'styled-components'
-import Login from '@/pages/Login'
+const Login = lazy(() => import('@/pages/Login'))
 
-function App() {
+export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="*" element={<SiteMain />} />
+        <Suspense fallback={<div />}>
+          <Route path="/login" element={<Login />} />
+        </Suspense>
+        <Route path="*" element={<App />} />
       </Routes>
     </BrowserRouter>
   )
 }
 
-function SiteMain() {
+function App() {
   const [blur] = useState(false)
   return (
     <AppBody className={`App ${blur ? 'blur' : ''}`}>
@@ -93,5 +93,3 @@ const FooterBody = styled.div`
     cursor: pointer;
   }
 `
-
-export default App
