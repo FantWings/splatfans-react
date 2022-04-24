@@ -1,21 +1,20 @@
 import { useState, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import styled from 'styled-components'
-import './style.css'
-
-import GlobalStyles from '@/theme/globalStyles'
 import Schedules from '@/pages/Schedules'
 const Login = lazy(() => import('@/pages/Login'))
+const LinkToNintendo = lazy(() => import('@/pages/LinkToNintendo'))
 
 export default function AppRouter() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Suspense fallback={<div />}>
+      <Suspense fallback={<div />}>
+        <Routes>
           <Route path="/login" element={<Login />} />
-        </Suspense>
-        <Route path="*" element={<App />} />
-      </Routes>
+          <Route path="/linkto" element={<LinkToNintendo />} />
+          <Route path="*" element={<App />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   )
 }
@@ -27,7 +26,6 @@ function App() {
       <NavBar />
       <Schedules />
       <Footer />
-      <GlobalStyles />
     </AppBody>
   )
 }

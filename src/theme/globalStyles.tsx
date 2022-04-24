@@ -1,6 +1,23 @@
 import { createGlobalStyle } from 'styled-components'
 import { squidMask } from './baseImage'
 const GlobalStyles = createGlobalStyle`
+
+  div.flex{
+    display: flex;
+    &.center{
+      justify-content: center;
+    }
+    &.multi-line{
+      flex-wrap: wrap;
+    }
+    &.single-line{
+      flex-wrap: nowrap;
+    }
+    &.grow{
+      flex-grow: 1 100%;
+    };
+  }
+
   // 容器样式
   div.container {
     margin-left: 32px;
@@ -141,6 +158,31 @@ const GlobalStyles = createGlobalStyle`
       background-image: linear-gradient(180deg,transparent,rgba(36,36,36,0.1)), url(${squidMask});
       background-position: top;
       background-size: 100% 100%,80px 80px;
+    }
+  }
+
+  div.forms{
+    div.input-box{
+      margin: 0.5rem auto;
+      padding: 0.5rem 0;
+      width: 100%;
+    }
+
+    input{
+      border: none;
+      background-color: #2a2a2a;
+      padding: 0.5rem;
+      width: 100%;
+      box-sizing: border-box;
+      border:1px #2a2a2a solid;
+      transition: 0.3s;
+      border-radius: 5px;
+      color:#fff;
+      line-height: 0;
+      :focus-visible{
+        outline: none;
+        border:1px #dbdbdb solid;
+      }
     }
   }
 `

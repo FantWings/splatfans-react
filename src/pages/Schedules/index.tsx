@@ -5,6 +5,7 @@ import SalmonRunBox from './SalmonRunBox'
 import { SchedulesAPI } from '../../interfaces/schedules'
 import { salmonRunAPI } from '../../interfaces/salmon-run'
 import merchandisesAPI from '../../interfaces/merchandises'
+import { API_SPLATOON } from '@/const/api'
 
 import Model from '../../components/Model'
 import GearShowCase from '../../components/GearShowCase'
@@ -14,23 +15,22 @@ export default function Schedules() {
   const [salmonRun, setSalmonRun] = useState<salmonRunAPI>()
   const [isActive, setIsActive] = useState(false)
   const [splatNetData, setSplatNetData] = useState<merchandisesAPI>()
-  const APIADDR: string = 'https://api.htips.cn/splatfans/api'
   useEffect(() => {
-    fetch(`${APIADDR}/schedules/battle.json`)
+    fetch(`${API_SPLATOON}/schedules.json`)
       .then((response) => response.json())
-      .then(({ data }) => setSchedules(data))
+      .then((data) => setSchedules(data))
   }, [])
 
   useEffect(() => {
-    fetch(`${APIADDR}/schedules/coop.json`)
+    fetch(`${API_SPLATOON}/coop-schedules.json`)
       .then((response) => response.json())
-      .then(({ data }) => setSalmonRun(data))
+      .then((data) => setSalmonRun(data))
   }, [])
 
   useEffect(() => {
-    fetch(`${APIADDR}/onlineshop/merchandises.json`)
+    fetch(`${API_SPLATOON}/merchandises.json`)
       .then((response) => response.json())
-      .then(({ data }) => setSplatNetData(data))
+      .then((data) => setSplatNetData(data))
   }, [])
 
   return (
