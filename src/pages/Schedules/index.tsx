@@ -60,7 +60,7 @@ export default function Schedules() {
           <div className="columns">
             {splatNetData &&
               splatNetData.merchandises.map((gear) => {
-                return <GearShowCase gear={gear} />
+                return <GearShowCase gear={gear} key={gear.id} />
               })}
           </div>
         </div>

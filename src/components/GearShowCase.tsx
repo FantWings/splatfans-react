@@ -33,7 +33,7 @@ export default function GearShowCase({ gear }: { gear: gears }) {
         </div>
         <div className="gear-name">
           <div className="overlay">
-            {/* <div className="info-overlay original-gear">
+            <div className="info-overlay original-gear">
               <span className="title">原始装备</span>
               <div className="skill-container">
                 <div className="skills flex-row">
@@ -51,7 +51,7 @@ export default function GearShowCase({ gear }: { gear: gears }) {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
             <div className="info-overlay common-ability">
               <span className="title">容易获得的技能</span>
               <div className="skill-container">

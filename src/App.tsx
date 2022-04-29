@@ -1,32 +1,44 @@
 import { useState, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/authContextProvider'
+import NavBar from './components/NavBar'
 import styled from 'styled-components'
+
 import Schedules from '@/pages/Schedules'
-const Login = lazy(() => import('@/pages/Login'))
-const LinkToNintendo = lazy(() => import('@/pages/LinkToNintendo'))
+const PageLogin = lazy(() => import('@/pages/PageLogin'))
+const Register = lazy(() => import('@/pages/PageRegister'))
+const LinkToNintendo = lazy(() => import('@/pages/PageLinkTo'))
 
 export default function AppRouter() {
   return (
     <BrowserRouter>
       <Suspense fallback={<div />}>
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/linkto" element={<LinkToNintendo />} />
-          <Route path="*" element={<App />} />
+          <Route path="/login" element={<PageLogin />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="*"
+            element={
+              <AuthProvider>
+                <Routes>
+                  <Route
+                    path="*"
+                    element={
+                      <>
+                        <NavBar />
+                        <Schedules />
+                        <Footer />
+                      </>
+                    }
+                  />
+                  <Route path="/connect" element={<LinkToNintendo />} />
+                </Routes>
+              </AuthProvider>
+            }
+          />
         </Routes>
       </Suspense>
     </BrowserRouter>
-  )
-}
-
-function App() {
-  const [blur] = useState(false)
-  return (
-    <AppBody className={`App ${blur ? 'blur' : ''}`}>
-      <NavBar />
-      <Schedules />
-      <Footer />
-    </AppBody>
   )
 }
 
@@ -42,41 +54,11 @@ function Footer() {
   )
 }
 
-// 页头组件
-function NavBar() {
-  return (
-    <NavBarBody className="masked squid">
-      <div className="container">
-        <div className="groups flex-app">
-          <div className="group-left">
-            <div className="item">
-              <div className="title size-1 font-splatoon1 is-inline">Splatoon 2</div>
-            </div>
-          </div>
-          <div className="group-right">
-            <div className="subtitle size-2 font-splatoon2 is-inline">时刻表</div>
-          </div>
-        </div>
-        <div className="groups flex-app">
-          <div className="group-left"></div>
-          <div className="group-right"></div>
-        </div>
-      </div>
-    </NavBarBody>
-  )
-}
-
 // App样式
 const AppBody = styled.div`
   &.blur {
     filter: blur(4px);
   }
-`
-
-// 页头样式
-const NavBarBody = styled.div`
-  background-color: #2e2e2e;
-  margin-bottom: 2rem;
 `
 
 // 页脚样式

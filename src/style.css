@@ -9,7 +9,7 @@
   src: url('./assets/fonts/Splatfont2.ttf');
 }
 
-html {
+body {
   background-image: url(./assets/img/bg-squids.a17b557e.png);
   background-position: top;
   background-size: 360px 360px;

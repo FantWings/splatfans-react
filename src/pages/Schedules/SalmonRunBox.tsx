@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import moment from 'moment'
-import CountDown from '../../components/Countdown'
+import CountDown from '@/components/Countdown'
 
-import BGSpots from '../../assets/img/bg-spots.png'
-import SalmonRunPic from '../../assets/img/1600px-Splatoon_2_art_book_cover_art.png'
-import MrGizz from '../../assets/img/mr-grizz.png'
-import { salmonRunAPI, weaponsList } from '../../interfaces/salmon-run'
-import { salmonIcon, dotMask, cardHeaderMask, hookMask, tagMask } from '../../theme/baseImage'
+import BGSpots from '@/assets/img/bg-spots.png'
+import SalmonRunPic from '@/assets/img/1600px-Splatoon_2_art_book_cover_art.png'
+import MrGizz from '@/assets/img/mr-grizz.png'
+import { salmonRunAPI, weaponsList } from '@/interfaces/salmon-run'
+import { salmonIcon, dotMask, cardHeaderMask, hookMask, tagMask } from '@/theme/baseImage'
 
 export default function SalmonRunBox({ data }: { data: salmonRunAPI }) {
   const { details, schedules } = data
@@ -109,16 +109,15 @@ export default function SalmonRunBox({ data }: { data: salmonRunAPI }) {
 const WeaponBox = ({ weaponList }: { weaponList: Array<weaponsList> }) => {
   return (
     <>
-      {weaponList.map((weapon) => {
+      {weaponList.map((weapon, index) => {
         return (
-          <div className="colunm" key={weapon.id}>
+          <div className="colunm" key={Number(weapon.id) <= 0 ? index : weapon.id}>
             <div className="image" style={{ padding: '0.25rem' }}>
-              <img
-                src={`https://app.splatoon2.nintendo.net${
-                  weapon.id === '-1' ? weapon.coop_special_weapon.image : weapon.weapon.image
-                }`}
-                alt="weapon"
-              />
+              {Number(weapon.id) <= 0 ? (
+                <img src={`https://app.splatoon2.nintendo.net${weapon.coop_special_weapon.image}`} alt="weapon" />
+              ) : (
+                <img src={`https://app.splatoon2.nintendo.net${weapon.weapon.image}`} alt="weapon" />
+              )}
             </div>
           </div>
         )

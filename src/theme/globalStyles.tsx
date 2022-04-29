@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components'
-import { squidMask } from './baseImage'
+import { squidMask, dotMask } from './baseImage'
+import BGSpots from '@/assets/img/bg-spots.png'
+
 const GlobalStyles = createGlobalStyle`
 
   div.flex{
@@ -159,11 +161,16 @@ const GlobalStyles = createGlobalStyle`
       background-position: top;
       background-size: 100% 100%,80px 80px;
     }
+    &.spots{
+      background-image: url(${BGSpots}), url(${dotMask});
+      background-position: 50% top;
+      background-size: 189px 189px, 40px 40px;
+    }
   }
 
   div.forms{
     div.input-box{
-      margin: 0.5rem auto;
+      /* margin: 0.5rem auto; */
       padding: 0.5rem 0;
       width: 100%;
     }
@@ -185,6 +192,13 @@ const GlobalStyles = createGlobalStyle`
       }
     }
   }
+
+  // svg样式
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
 `
 
 export default GlobalStyles
