@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react'
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/authContextProvider'
 import NavBar from './components/NavBar'
@@ -53,13 +53,6 @@ function Footer() {
     </FooterBody>
   )
 }
-
-// App样式
-const AppBody = styled.div`
-  &.blur {
-    filter: blur(4px);
-  }
-`
 
 // 页脚样式
 const FooterBody = styled.div`
