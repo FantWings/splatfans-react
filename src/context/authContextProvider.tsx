@@ -1,7 +1,7 @@
 import { useEffect, useState, createContext } from 'react'
 import { userInfoInterface } from '@/interfaces/user'
 import fetchData from '@/utils/fetch'
-import { API_SERVER } from '@/const/api'
+import { API_BACKEND } from '@/const/api'
 
 const AuthContext = createContext({
   token: '',
@@ -34,7 +34,7 @@ const AuthProvider = (props: any) => {
 
   useEffect(() => {
     if (token !== '' && expTime > new Date().getTime()) {
-      fetchData(`${API_SERVER}/user/userinfo`, 'GET', { token: token })
+      fetchData(`${API_BACKEND}/user/userinfo`, 'GET', { token: token })
         .then((userInfoData: userInfoInterface) => setUserInfo(userInfoData))
         .then(() => {
           setLoggedIn(true)

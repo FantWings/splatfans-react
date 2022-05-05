@@ -1,3 +1,4 @@
-export const API_SPLATOON: string = 'https://splatoon2.ink/data'
-// export const API_SERVER: string = 'https://api.htips.cn/splatfans/api'
-export const API_SERVER: string = 'http://127.0.0.1:5000/api'
+export const API_SPLATINK: string = 'https://splatoon2.ink/data'
+export const API_BACKEND: string = process.env.API_BACKEND || 'http://127.0.0.1/splatfans'
+export const RECORDNUM: string = process.env.REACT_APP_RECORDNUM || 'not_set'
+export const BUILD: string = process.env.REACT_APP_BUILD || 'dev_build'

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import img_copy_link from '@/assets/img/link_to_intendo/copy-link.png'
 import SetupModel from '@/components/SetupModel'
 import fetchData from '@/utils/fetch'
-import { API_SERVER } from '@/const/api'
+import { API_BACKEND } from '@/const/api'
 import { AuthContext } from '@/context/authContextProvider'
 import { useNavigate } from 'react-router-dom'
 
@@ -23,7 +23,7 @@ export default function LinkToNintendo() {
   // 每个步骤的对应操作
   useEffect(() => {
     if (stage === 1) {
-      fetchData(`${API_SERVER}/iksm/login_url`, 'GET', { token }).then((data) => {
+      fetchData(`${API_BACKEND}/iksm/login_url`, 'GET', { token }).then((data) => {
         setLoginUrl(data)
         window.open(data, undefined, 'width=1000,height=600')
       })
@@ -31,9 +31,9 @@ export default function LinkToNintendo() {
   }, [stage, token])
 
   const sendAccountUrl = (account_url: string, token: string) => {
-    fetchData(`${API_SERVER}/iksm/session_token`, 'POST', { token }, { account_url })
+    fetchData(`${API_BACKEND}/iksm/session_token`, 'POST', { token }, { account_url })
       .then(() => {
-        return fetchData(`${API_SERVER}/iksm/cookie`, 'GET', { token })
+        return fetchData(`${API_BACKEND}/iksm/cookie`, 'GET', { token })
       })
       .then(() => {
         window.location.href = '/'
@@ -42,7 +42,7 @@ export default function LinkToNintendo() {
   }
 
   const doUnlink = (token: string) => {
-    fetchData(`${API_SERVER}/iksm/unlink`, 'DELETE', { token }).then(() => (window.location.href = '/'))
+    fetchData(`${API_BACKEND}/iksm/unlink`, 'DELETE', { token }).then(() => (window.location.href = '/'))
   }
   return (
     <SetupModel>

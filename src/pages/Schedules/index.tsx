@@ -5,7 +5,7 @@ import SalmonRunBox from './SalmonRunBox'
 import { SchedulesAPI } from '../../interfaces/schedules'
 import { salmonRunAPI } from '../../interfaces/salmon-run'
 import merchandisesAPI from '../../interfaces/merchandises'
-import { API_SPLATOON } from '@/const/api'
+import { API_SPLATINK } from '@/const/api'
 
 import Model from '../../components/Model'
 import GearShowCase from '../../components/GearShowCase'
@@ -16,19 +16,19 @@ export default function Schedules() {
   const [isActive, setIsActive] = useState(false)
   const [splatNetData, setSplatNetData] = useState<merchandisesAPI>()
   useEffect(() => {
-    fetch(`${API_SPLATOON}/schedules.json`)
+    fetch(`${API_SPLATINK}/schedules.json`)
       .then((response) => response.json())
       .then((data) => setSchedules(data))
   }, [])
 
   useEffect(() => {
-    fetch(`${API_SPLATOON}/coop-schedules.json`)
+    fetch(`${API_SPLATINK}/coop-schedules.json`)
       .then((response) => response.json())
       .then((data) => setSalmonRun(data))
   }, [])
 
   useEffect(() => {
-    fetch(`${API_SPLATOON}/merchandises.json`)
+    fetch(`${API_SPLATINK}/merchandises.json`)
       .then((response) => response.json())
       .then((data) => setSplatNetData(data))
   }, [])

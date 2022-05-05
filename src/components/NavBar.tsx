@@ -6,7 +6,7 @@ import { ReactComponent as IconLogOut } from '@/assets/icons/logout.svg'
 import { ReactComponent as IconChain } from '@/assets/icons/chain.svg'
 import styled from 'styled-components'
 import fetchData from '@/utils/fetch'
-import { API_SERVER } from '@/const/api'
+import { API_BACKEND } from '@/const/api'
 
 // 页头组件
 export default function NavBar() {
@@ -19,7 +19,7 @@ export default function NavBar() {
   } = useContext(AuthContext)
 
   const doLogout = () => {
-    fetchData(`${API_SERVER}/auth/logout`, 'DELETE', { token })
+    fetchData(`${API_BACKEND}/auth/logout`, 'DELETE', { token })
       .then(() => localStorage.clear())
       .then(() => {
         window.location.reload()

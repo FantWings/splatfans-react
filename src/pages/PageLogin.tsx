@@ -3,7 +3,7 @@ import SalmonRunPic from '@/assets/img/1600px-Splatoon_2_art_book_cover_art.png'
 import styled from 'styled-components'
 import SetupModel from '@/components/SetupModel'
 import fetchData from '@/utils/fetch'
-import { API_SERVER } from '@/const/api'
+import { API_BACKEND } from '@/const/api'
 import { useNavigate } from 'react-router-dom'
 
 export default function PageLogin() {
@@ -15,7 +15,7 @@ export default function PageLogin() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const doLogin = () => {
-    fetchData(`${API_SERVER}/auth/login`, 'POST', undefined, { username, password })
+    fetchData(`${API_BACKEND}/auth/login`, 'POST', undefined, { username, password })
       .then(({ token, expTime }) => {
         // 登录成功，将token写入localStorge
         localStorage.setItem('token', token)

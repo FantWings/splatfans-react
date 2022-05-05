@@ -3,7 +3,7 @@ import SalmonRunPic from '@/assets/img/1600px-Splatoon_2_art_book_cover_art.png'
 import styled from 'styled-components'
 import SetupModel from '@/components/SetupModel'
 import fetchData from '@/utils/fetch'
-import { API_SERVER } from '@/const/api'
+import { API_BACKEND } from '@/const/api'
 import { useNavigate } from 'react-router-dom'
 
 export default function PageRegister() {
@@ -30,14 +30,14 @@ export default function PageRegister() {
       })
     }
 
-    fetchData(`${API_SERVER}/auth/register`, 'POST', undefined, { email, password, username })
+    fetchData(`${API_BACKEND}/auth/register`, 'POST', undefined, { email, password, username })
       .then(({ token, expTime }) => {
         // 注册成功，将token写入localStorge
         localStorage.setItem('token', token)
         // 将过期时间写入localstorge
         localStorage.setItem('expTime', expTime)
         // 注册成功，获取用户信息
-        // return fetchData(`${API_SERVER}/user/userinfo`, 'GET', { token })
+        // return fetchData(`${API_BACKEND}/user/userinfo`, 'GET', { token })
         // navigate('/linkto')
       })
       // .then((userInfoData) => localStorage.setItem('userInfo', JSON.stringify(userInfoData)))
