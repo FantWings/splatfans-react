@@ -1,101 +1,121 @@
-import styled from 'styled-components'
-import moment from 'moment'
-import CountDown from '@/components/Countdown'
+import styled from 'styled-components';
+import moment from 'moment';
+import CountDown from '@/components/Countdown';
 
-import BGSpots from '@/assets/img/bg-spots.png'
-import SalmonRunPic from '@/assets/img/1600px-Splatoon_2_art_book_cover_art.png'
-import MrGizz from '@/assets/img/mr-grizz.png'
-import { salmonRunAPI, weaponsList } from '@/interfaces/salmon-run'
-import { salmonIcon, dotMask, cardHeaderMask, hookMask, tagMask } from '@/theme/baseImage'
+import BGSpots from '@/assets/img/bg-spots.png';
+import SalmonRunPic from '@/assets/img/1600px-Splatoon_2_art_book_cover_art.png';
+import MrGizz from '@/assets/img/mr-grizz.png';
+import { salmonRunAPI, weaponsList } from '@/interfaces/salmon-run';
+import {
+  salmonIcon,
+  dotMask,
+  cardHeaderMask,
+  hookMask,
+  tagMask,
+} from '@/theme/baseImage';
 
 export default function SalmonRunBox({ data }: { data: salmonRunAPI }) {
-  const { details, schedules } = data
-  const covertTime = (timestamp: number) => moment(parseInt(timestamp + '000')).format('MM/DD HH:mm')
+  const { details, schedules } = data;
+  const covertTime = (timestamp: number) =>
+    moment(parseInt(timestamp + '000')).format('MM/DD HH:mm');
 
   return (
     <Body>
       {/* <div id="hook"></div> */}
-      <div className="hook-box font-splatoon2 schedule-box">
-        <div className="content">
+      <div className='hook-box font-splatoon2 schedule-box'>
+        <div className='content'>
           {/* ------------------标题 ----------------*/}
-          <div className="stage-tittle">
-            <div className="item image-box">
-              <div className="image is-48x48">
-                <img src={MrGizz} alt="regular-battle-icon" />
+          <div className='stage-tittle'>
+            <div className='item image-box'>
+              <div className='image is-48x48'>
+                <img src={MrGizz} alt='regular-battle-icon' />
               </div>
             </div>
-            <div className="item">
-              <div className="title font-splatoon1">Salmon Run</div>
+            <div className='item'>
+              <div className='title font-splatoon1'>Salmon Run</div>
             </div>
           </div>
-          <div className="columns" style={{ marginTop: '1rem' }}>
-            <div className="column salmonRunGear">
-              <div className="image is-16x9"></div>
+          <div className='columns' style={{ marginTop: '1rem' }}>
+            <div className='column salmonRunGear'>
+              <div className='image is-16x9'></div>
             </div>
-            <div className="column">
-              <div className="salmonRunInfo">
-                <div className="open-info">
-                  <div className="next-tag outside">正在开放</div>
-                  <div className="time">
-                    <span className="next-date">
-                      {covertTime(details[0].start_time)} - {covertTime(details[0].end_time)}
+            <div className='column'>
+              <div className='salmonRunInfo'>
+                <div className='open-info'>
+                  <div className='next-tag outside'>正在开放</div>
+                  <div className='time'>
+                    <span className='next-date'>
+                      {covertTime(details[0].start_time)} -{' '}
+                      {covertTime(details[0].end_time)}
                     </span>
-                    <span className="count-down">{CountDown(details[0].end_time)}</span>
+                    <span className='count-down'>
+                      {CountDown(details[0].end_time)}
+                    </span>
                   </div>
-                  <div className="open-details">
-                    <div className="map">
+                  <div className='open-details'>
+                    <div className='map'>
                       <div
-                        className="stage-image"
+                        className='stage-image'
                         style={{
                           backgroundImage: `url(https://app.splatoon2.nintendo.net${details[0].stage.image})`,
                         }}
                       >
-                        <figure className="image is-16x9" />
+                        <figure className='image is-16x9' />
                       </div>
                     </div>
-                    <div className="weapons">
-                      <div className="title" style={{ marginBottom: '0.5rem' }}>
+                    <div className='weapons'>
+                      <div className='title' style={{ marginBottom: '0.5rem' }}>
                         当前武器
                       </div>
-                      <div className="columns">
+                      <div className='columns'>
                         <WeaponBox weaponList={details[0].weapons} />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="next-info">
-                  <div className="next-tag inside">即将到来</div>
-                  <div className="event">
-                    <div className="time-line">
-                      <div className="image is-4x3">
-                        <img src={salmonIcon} alt="" />
+                <div className='next-info'>
+                  <div className='next-tag inside'>即将到来</div>
+                  <div className='event'>
+                    <div className='time-line'>
+                      <div className='image is-4x3'>
+                        <img src={salmonIcon} alt='' />
                       </div>
                       <div>
-                        {covertTime(details[1].start_time)} - {covertTime(details[1].end_time)}
+                        {covertTime(details[1].start_time)} -{' '}
+                        {covertTime(details[1].end_time)}
                       </div>
                     </div>
-                    <div className="next-map-info">
-                      <div className="next-map">
+                    <div className='next-map-info'>
+                      <div className='next-map'>
                         <div
-                          className="stage-image"
+                          className='stage-image'
                           style={{
                             backgroundImage: `url(https://app.splatoon2.nintendo.net${details[1].stage.image})`,
                           }}
                         >
-                          <figure className="image is-16x9" />
+                          <figure className='image is-16x9' />
                         </div>
                       </div>
-                      <div className="next-name">{details[1].stage.name}</div>
-                      <div className="next-weapons">
-                        <div className="columns">
+                      <div className='next-name'>{details[1].stage.name}</div>
+                      <div className='next-weapons'>
+                        <div className='columns'>
                           <WeaponBox weaponList={details[1].weapons} />
                         </div>
                       </div>
                     </div>
                   </div>
-                  <Events startTime={schedules[2].start_time} endTime={schedules[2].end_time} />
-                  <Events startTime={schedules[3].start_time} endTime={schedules[3].end_time} />
-                  <Events startTime={schedules[4].start_time} endTime={schedules[4].end_time} />
+                  <Events
+                    startTime={schedules[2].start_time}
+                    endTime={schedules[2].end_time}
+                  />
+                  <Events
+                    startTime={schedules[3].start_time}
+                    endTime={schedules[3].end_time}
+                  />
+                  <Events
+                    startTime={schedules[4].start_time}
+                    endTime={schedules[4].end_time}
+                  />
                 </div>
               </div>
             </div>
@@ -103,44 +123,61 @@ export default function SalmonRunBox({ data }: { data: salmonRunAPI }) {
         </div>
       </div>
     </Body>
-  )
+  );
 }
 
 const WeaponBox = ({ weaponList }: { weaponList: Array<weaponsList> }) => {
   return (
     <>
       {weaponList.map((weapon, index) => {
+        console.log(weapon);
         return (
-          <div className="colunm" key={Number(weapon.id) <= 0 ? index : weapon.id}>
-            <div className="image" style={{ padding: '0.25rem' }}>
-              {Number(weapon.id) <= 0 ? (
-                <img src={`https://app.splatoon2.nintendo.net${weapon.coop_special_weapon.image}`} alt="weapon" />
+          <div
+            className='colunm'
+            key={Number(weapon.id) <= 0 ? index : weapon.id}
+          >
+            <div className='image' style={{ padding: '0.25rem' }}>
+              {weapon.coop_special_weapon === undefined ? (
+                <img
+                  src={`https://app.splatoon2.nintendo.net${weapon.weapon.image}`}
+                  alt='weapon'
+                />
               ) : (
-                <img src={`https://app.splatoon2.nintendo.net${weapon.weapon.image}`} alt="weapon" />
+                <img
+                  src={`https://app.splatoon2.nintendo.net${weapon.coop_special_weapon.image}`}
+                  alt='weapon'
+                />
               )}
             </div>
           </div>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-const Events = ({ startTime, endTime }: { startTime: number; endTime: number }) => {
-  const covertTime = (timestamp: number) => moment(parseInt(timestamp + '000')).format('MM/DD HH:mm')
+const Events = ({
+  startTime,
+  endTime,
+}: {
+  startTime: number;
+  endTime: number;
+}) => {
+  const covertTime = (timestamp: number) =>
+    moment(parseInt(timestamp + '000')).format('MM/DD HH:mm');
   return (
-    <div className="event">
-      <div className="time-line">
-        <div className="image is-4x3">
-          <img src={salmonIcon} alt="" />
+    <div className='event'>
+      <div className='time-line'>
+        <div className='image is-4x3'>
+          <img src={salmonIcon} alt='' />
         </div>
         <div>
           {covertTime(startTime)} - {covertTime(endTime)}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Body = styled.div`
   justify-content: center;
@@ -354,4 +391,4 @@ const Body = styled.div`
       padding-top: 56.5%;
     }
   }
-`
+`;
